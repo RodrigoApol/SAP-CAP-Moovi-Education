@@ -1,0 +1,16 @@
+{
+  "name": "Demonstracao",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@sap-cloud-sdk/http-client": "^4.7.0",
+    "@sap/cds": "^10"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^3"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "private": true
+}

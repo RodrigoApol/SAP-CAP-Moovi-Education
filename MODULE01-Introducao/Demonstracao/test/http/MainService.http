@@ -1,0 +1,44 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+
+### Users
+# @name Users_GET
+GET {{server}}/users-api/Users
+Authorization: Basic {{username}}:{{password}}
+
+
+### Users
+# @name Users_POST
+POST {{server}}/users-api/Users
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  # "ID": "2253001e-ecec-4e02-9ad5-dd5f26f6ee46",
+  "email": "rodrigo.araujo@sap",
+  "firstName": "Rodrigo",
+  "lastName": "Araujo"
+}
+
+
+### Users
+# @name Users_PATCH
+PATCH {{server}}/users-api/Users/2253001e-ecec-4e02-9ad5-dd5f26f6ee46
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "2253001e-ecec-4e02-9ad5-dd5f26f6ee46",
+  "email": "email-2253001",
+  "firstName": "firstName-2253001",
+  "lastName": "lastName-2253001"
+}
+
+
+### Users
+# @name Users_DELETE
+DELETE {{server}}/users-api/Users/2253001e-ecec-4e02-9ad5-dd5f26f6ee46
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}

@@ -1,0 +1,6 @@
+cds:
+  requires:
+    STAR_WARS_API:
+      kind: rest
+      credentials: 
+        url: https://swapi.dev/api
