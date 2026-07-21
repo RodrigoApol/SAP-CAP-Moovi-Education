@@ -42,3 +42,8 @@ Authorization: Basic {{username}}:{{password}}
 DELETE {{server}}/users-api/Users/2253001e-ecec-4e02-9ad5-dd5f26f6ee46
 Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
+
+### getPersonById
+# @name getPersonById_GET
+GET {{server}}/users-api/getPersonById(id=1)
+Authorization: Basic {{username}}:{{password}}
