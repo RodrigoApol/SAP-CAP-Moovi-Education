@@ -6,8 +6,7 @@
     "@sap/cds": "^10"
   },
   "devDependencies": {
-    "@cap-js/sqlite": "^3",
-    "git-commit-msg-linter": "^5.0.8"
+    "@cap-js/sqlite": "^3"
   },
   "scripts": {
     "start": "cds-serve",
