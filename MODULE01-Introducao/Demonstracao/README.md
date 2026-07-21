@@ -6,7 +6,7 @@ cds init
 
 ### Estrutura de Pastas Criadas:
 
-![[Pasted image 20260720151511.png]]
+![Estrutura de Pastas](./images/estrutura_projeto_cap.png)
 
 - **app**: Aplicativos Fiori/Front-End
 - **db**: Camada de persistência/definições das entidades
@@ -20,7 +20,7 @@ cds add nodejs
 npm install
 ```
 
-![[Pasted image 20260720160841.png]]
+![Estrutura de pastas com NodeJS](./images/add_nodejs.png)
 ## 02. Criando Schema
 
 #### db/schema.cds
@@ -73,7 +73,7 @@ service MainService {
 cds add http
 ```
 
-![[Pasted image 20260720162227.png]]
+![Estrutura de Pastas com Testes de Rotas](./images/add_routes_tests.png)
 
 ### Testes prontos
 ``` http
