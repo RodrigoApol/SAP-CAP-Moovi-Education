@@ -11,5 +11,13 @@ Content-Type: application/json
 
 ###
 
-DELETE http://{{Server}}/odata/v4/main/{{Entity}}(836a78e0-3d3c-4748-964d-db7fc4ee7237)
+PATCH http://{{Server}}/odata/v4/main/{{Entity}}(ID=5336100b-bb59-4b32-8331-69179f5b74e5)
+Content-Type: application/json
+
+{
+    "ID": "12345"
+}
+###
+
+DELETE http://{{Server}}/odata/v4/main/{{Entity}}(ID=5336100b-bb59-4b32-8331-69179f5b74e5)
 Content-Length: 0
