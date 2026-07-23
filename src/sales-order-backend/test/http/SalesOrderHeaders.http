@@ -1,0 +1,15 @@
+@Server=localhost:4004
+@Entity=SalesOrderHeaders
+
+GET http://{{Server}}/odata/v4/main/{{Entity}}
+Content-Type: application/json
+    
+###
+
+POST http://{{Server}}/odata/v4/main/{{Entity}}
+Content-Type: application/json
+
+###
+
+DELETE http://{{Server}}/odata/v4/main/{{Entity}}(836a78e0-3d3c-4748-964d-db7fc4ee7237)
+Content-Length: 0
