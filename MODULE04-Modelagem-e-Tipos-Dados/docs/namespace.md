@@ -1,6 +1,6 @@
 O **namespace** é o agrupamento lógico que organiza e identifica as entidades do modelo de dados. Em outras palavras definimos as entidades dentro de um **namespace** para que a organização do código fique "melhor" entendido internamente.
 
-``` 
+``` CDS
 namespace my.company.sales;
 
 entity Customer {
@@ -24,7 +24,7 @@ Quando essas entidades tiverem suas respectivas tabelas no banco de dados, o nam
 MY_COMPANY_SALES_CUSTOMER
 MY_COMPANY_SALES_ORDER
 ```
-
+<br>
 Mas isso é apenas a consequência de sua aplicação, dentro do CAP usamos o namespace em praticamente tudo... *imports*, *associations*, *services*, etc...
 
 ## Extra Doc
