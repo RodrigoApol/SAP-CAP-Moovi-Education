@@ -1,0 +1,34 @@
+@Server=localhost:4004
+@Entity=Customers
+@id=196aaff8-af74-465e-8f9b-9c03eb4317a9
+
+###
+GET http://{{Server}}/odata/v4/main/{{Entity}}
+Content-Type: application/json
+
+###
+GET http://{{Server}}/odata/v4/main/{{Entity}}(ID={{id}})
+Content-Type: application/json
+
+###
+POST http://{{Server}}/odata/v4/main/{{Entity}}
+Content-Type: application/json
+
+{
+    "ID": "{{id}}",
+    "firstName": "Rodrigo",
+    "lastName": "Araujo",
+    "email": "rodrigo.araujo@email.com"
+}
+
+###
+PATCH  http://{{Server}}/odata/v4/main/{{Entity}}(ID={{id}})
+Content-Type: application/json
+
+{
+    "email": "araujo.rodrigo@email.com"
+}
+
+###
+DELETE http://{{Server}}/odata/v4/main/{{Entity}}(ID={{id}})
+Content-Length: 0

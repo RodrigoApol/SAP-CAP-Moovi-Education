@@ -1,0 +1,31 @@
+@Server=localhost:4004
+@Entity=Products
+@id=800fafc9-c69b-4134-b4c9-1f3ceb104a8b
+
+###
+GET http://{{Server}}/odata/v4/main/{{Entity}}
+
+###
+GET http://{{Server}}/odata/v4/main/{{Entity}}(ID={{id}})
+
+###
+POST http://{{Server}}/odata/v4/main/{{Entity}}
+Content-Type: application/json
+
+{
+    "ID": "{{id}}",
+    "name": "Computador",
+    "price": 4800.50
+}
+
+###
+PATCH  http://{{Server}}/odata/v4/main/{{Entity}}(ID={{id}})
+Content-Type: application/json
+
+{
+    "price": 5960.20
+}
+
+###
+DELETE   http://{{Server}}/odata/v4/main/{{Entity}}(ID={{id}})
+Content-Length: 0
