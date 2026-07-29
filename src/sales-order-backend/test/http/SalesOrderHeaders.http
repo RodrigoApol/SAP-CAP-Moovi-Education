@@ -37,3 +37,7 @@ Content-Type: application/json
 
 DELETE http://{{Server}}/odata/v4/main/{{Entity}}(ID=5336100b-bb59-4b32-8331-69179f5b74e5)
 Content-Length: 0
+
+###
+# Acessando entidade filha com $expand
+GET http://{{Server}}/odata/v4/main/{{Entity}}(ID={{id}})?$expand=items

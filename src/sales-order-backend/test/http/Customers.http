@@ -11,6 +11,10 @@ GET http://{{Server}}/odata/v4/main/{{Entity}}(ID={{id}})
 Content-Type: application/json
 
 ###
+# Selecionando campos específicos com #select e filtrando valores com $filter
+GET http://{{Server}}/odata/v4/main/{{Entity}}?$select=ID,firstName,lastName,email&$filter=firstName eq 'Rodrigo'
+
+###
 POST http://{{Server}}/odata/v4/main/{{Entity}}
 Content-Type: application/json
 
@@ -32,3 +36,11 @@ Content-Type: application/json
 ###
 DELETE http://{{Server}}/odata/v4/main/{{Entity}}(ID={{id}})
 Content-Length: 0
+
+###
+# Descobrindo a quantidade de registros com $count
+GET http://{{Server}}/odata/v4/main/{{Entity}}/$count
+
+### 
+# Paginação com $skip e $top
+GET http://{{Server}}/odata/v4/main/{{Entity}}?$skip=10&$top=5
