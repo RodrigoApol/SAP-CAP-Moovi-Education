@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "es2025",
+        "module": "node16",
+        "moduleResolution": "node16",
+        "strict": true,
+        "strictNullChecks": true,
+        "noImplicitAny": true,
+        "esModuleInterop": true,
+        "outDir": "./dist",
+        "rootDir": "./"
+    },
+    "include": [
+        "srv"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
