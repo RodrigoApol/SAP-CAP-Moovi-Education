@@ -11,11 +11,15 @@
     "@types/node": "^26.1.2",
     "git-commit-msg-linter": "^5.0.8",
     "tsx": "^4.23.1",
-    "typescript": "^7.0.2"
+    "typescript": "5.9",
+    "@cap-js/cds-types": "^0.18.0"
   },
   "scripts": {
     "start": "cds-serve",
     "dev": "cds-tsx watch"
   },
-  "private": true
+  "private": true,
+  "imports": {
+    "#cds-models/*": "./@cds-models/*/index.js"
+  }
 }
