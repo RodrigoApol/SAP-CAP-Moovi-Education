@@ -1,19 +1,29 @@
 {
   "compilerOptions": {
-    "target": "es2023",
-    "module": "node16",
-    "moduleResolution": "node16",
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "skipLibCheck": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "esModuleInterop": true,
     "outDir": "./dist",
-    "rootDir": "./"
+    "rootDir": "./",
+    "paths": {
+      "@sap/cds": [
+        "./node_modules/@cap-js/cds-types"
+      ],
+      "#cds-models/*": [
+        "./@cds-models/*"
+      ]
+    }
   },
   "include": [
-    "srv"
+    "srv/**/*"
   ],
   "exclude": [
-    "node_modules"
+    "node modules"
   ]
 }
