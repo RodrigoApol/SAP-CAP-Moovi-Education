@@ -54,16 +54,13 @@ export default (srv: Service) => {
         // const headers = Array.isArray(results) ? results : [results] as SalesOrderHeaders;
 
         const header = request.data;
-
         const items = header.items as SalesOrderItems;
-        console.log(`Funcionando até aqui `, items);
 
         const productsData = items.map(item => ({
             ID: item.product_ID as string,
             quantity: item.quantity as number
         }));
 
-        console.log(productsData);
         // for (const header of headers) {
         //     const items = header.items as SalesOrderItems;
         //     const productsData = items.map(item => ({
@@ -81,8 +78,6 @@ export default (srv: Service) => {
             foundProduct.stock = (foundProduct.stock as number) - productData.quantity;
             const updateQuery = UPDATE(Product).set({ stock: foundProduct.stock }).where({ ID: foundProduct.ID });
             await cds.run(updateQuery);
-
-            console.log(`estoque atualizado: ${foundProduct.stock}`);
         }
     });
 }
