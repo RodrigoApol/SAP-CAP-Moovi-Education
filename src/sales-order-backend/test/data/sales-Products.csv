@@ -1,11 +1,6 @@
-ID,name,price,createdAt,createdBy,modifiedAt,modifiedBy
-10224493-e5fd-4abb-9a33-b9bb9462b950,name-10224493,6313737168917.89,2022-04-12T02:00:00.000Z,createdBy.6359p@example.com,2013-06-21T02:00:00.000Z,modifiedBy.6359p@example.org
-22414574-3183-48c9-9b55-41ffa6d4c68e,name-22414574,3218376682566.27,2004-04-08T02:00:00.000Z,createdBy.dcf72@example.net,2014-04-21T02:00:00.000Z,modifiedBy.dcf72@example.org
-22414575-92f5-4a8f-8758-af50c49729a0,name-22414575,5223934599824.12,2012-09-01T02:00:00.000Z,createdBy.dcf73@example.org,2016-02-04T02:00:00.000Z,modifiedBy.dcf73@example.org
-22414576-b4a6-4e94-b818-3c23f2086eb8,name-22414576,7781867781955.66,2018-03-06T02:00:00.000Z,createdBy.dcf74@example.com,2001-11-23T02:00:00.000Z,modifiedBy.dcf74@example.com
-22414577-179a-4fbc-9394-a82917cc418d,name-22414577,1693854952477.07,2010-08-11T02:00:00.000Z,createdBy.dcf75@example.net,2018-07-06T02:00:00.000Z,modifiedBy.dcf75@example.com
-22414578-e2e3-4173-9125-b583bee1baa1,name-22414578,8315797116099.91,2014-07-12T02:00:00.000Z,createdBy.dcf76@example.net,2014-05-03T02:00:00.000Z,modifiedBy.dcf76@example.org
-22414579-7a8a-487f-b15c-246361313957,name-22414579,8229136205636.09,2023-12-19T02:00:00.000Z,createdBy.dcf77@example.com,2012-01-17T02:00:00.000Z,modifiedBy.dcf77@example.com
-22414580-f518-44db-87a2-01ed3680c2fa,name-22414580,2309283684964.83,2011-10-18T02:00:00.000Z,createdBy.dcf78@example.org,2000-01-17T02:00:00.000Z,modifiedBy.dcf78@example.com
-22414581-069e-4a09-aacd-824c429175ac,name-22414581,449839266465.57,2023-10-02T02:00:00.000Z,createdBy.dcf79@example.org,2019-11-22T02:00:00.000Z,modifiedBy.dcf79@example.net
-22414582-b931-462e-972b-243ba9307302,name-22414582,2990157344767.81,2001-09-27T02:00:00.000Z,createdBy.dcf7a@example.com,2006-03-28T02:00:00.000Z,modifiedBy.dcf7a@example.org
+ID,name,price,stock,createdAt,createdBy,modifiedAt,modifiedBy
+19725797-e863-4377-beca-a756e6863896,Espada,5964294836297.41,78,2007-01-03T02:00:00.000Z,createdBy.bqsit@example.com,2014-04-16T02:00:00.000Z,modifiedBy.bqsit@example.net
+18985828-1a5f-4472-9b32-a41fe1ff76b6,Ovos de Dragão,3018547077610.33,0,2023-09-26T02:00:00.000Z,createdBy.baxk4@example.org,2008-05-25T02:00:00.000Z,modifiedBy.baxk4@example.com
+18985829-499e-44aa-bb64-a37ecb35ddb3,Elmo,3908712957236.48,97,2014-11-16T02:00:00.000Z,createdBy.baxk5@example.net,2004-10-31T02:00:00.000Z,modifiedBy.baxk5@example.com
+18985830-7856-432e-bfb7-def609a645a9,Escudo,1697849845157.5,69,2017-04-10T02:00:00.000Z,createdBy.baxk6@example.net,2013-09-13T02:00:00.000Z,modifiedBy.baxk6@example.org
+18985831-e7a4-4ae6-9ee7-bfe503e1e695,Armadura,5317649985970.75,54,2011-11-22T02:00:00.000Z,createdBy.baxk7@example.net,2015-08-30T02:00:00.000Z,modifiedBy.baxk7@example.net
