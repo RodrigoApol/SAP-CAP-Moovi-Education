@@ -1,6 +1,6 @@
 @Server=localhost:4004
 @Entity=Products
-@id=800fafc9-c69b-4134-b4c9-1f3ceb104a8b
+@id=19725797-e863-4377-beca-a756e6863896
 
 ###
 GET http://{{Server}}/odata/v4/main/{{Entity}}

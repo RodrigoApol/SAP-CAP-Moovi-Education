@@ -1,7 +1,8 @@
 @Server=localhost:4004
 @Entity=SalesOrderHeaders
-@ProductID=800fafc9-c69b-4134-b4c9-1f3ceb104a8b
-@CustomerID=196aaff8-af74-465e-8f9b-9c03eb4317a9
+@ProductID=19725797-e863-4377-beca-a756e6863896
+@PrdouctStockZero=18985828-1a5f-4472-9b32-a41fe1ff76b6
+@CustomerID=20193604-6bde-4eea-af89-951abe3b6808
 @id=4d9ab65c-7c09-428b-bf29-703db8eea52f
 
 GET http://{{Server}}/odata/v4/main/{{Entity}}
@@ -19,6 +20,11 @@ Content-Type: application/json
         {
             "product_ID": "{{ProductID}}",
             "quantity": 10,
+            "price": 5000
+        },
+        {
+            "product_ID": "{{ProductID}}",
+            "quantity": 5,
             "price": 5000
         }
     ],

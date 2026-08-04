@@ -1,6 +1,6 @@
 @Server=localhost:4004
 @Entity=Customers
-@id=196aaff8-af74-465e-8f9b-9c03eb4317a9
+@id=20193604-6bde-4eea-af89-951abe3b6808
 
 ###
 GET http://{{Server}}/odata/v4/main/{{Entity}}
