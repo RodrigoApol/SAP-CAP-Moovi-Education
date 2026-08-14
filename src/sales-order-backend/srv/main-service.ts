@@ -12,7 +12,6 @@ export default (srv: Service) => {
 
     srv.before("CREATE", "SalesOrderHeaders", async (request: Request) => {
         const params = request.data;
-        console.log(params)
 
         if (!params.customer_ID) {
             return request.reject(400, "Customer ID is required");
