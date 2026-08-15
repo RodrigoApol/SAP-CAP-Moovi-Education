@@ -1,0 +1,25 @@
+{
+    "cds": {
+        "[development]": {
+            "requires": {
+                "auth": {
+                    "kind": "basic",
+                    "users": {
+                        "admin": {
+                            "password": "master",
+                            "roles": [
+                                "admin"
+                            ]
+                        },
+                        "rodrigo": {
+                            "password": "rodrigo@2001",
+                            "roles": [
+                                "read_only_user"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
