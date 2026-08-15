@@ -2,6 +2,12 @@ import cds, { Service, Request } from "@sap/cds";
 import { Customer, Customers, Product, Products, SalesOrderHeaders, SalesOrderItem, SalesOrderItems } from "#cds-models/sales"
 
 export default (srv: Service) => {
+    srv.before(['WRITE', 'DELETE'], '*', (request: Request) => {
+        if (!request.user.is("admin")) {
+            return request.reject(403, "Sem acesso ao recurso.")
+        }
+    })
+
     srv.after("READ", "Customers", (result: Customers) => {
         result.forEach(customer => {
             if (!customer.email?.includes("@")) {

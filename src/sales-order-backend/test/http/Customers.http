@@ -17,6 +17,7 @@ GET http://{{Server}}/odata/v4/main/{{Entity}}?$select=ID,firstName,lastName,ema
 ###
 POST http://{{Server}}/odata/v4/main/{{Entity}}
 Content-Type: application/json
+Authorization: rodrigo:rodrigo@2001
 
 {
     "ID": "{{id}}",
