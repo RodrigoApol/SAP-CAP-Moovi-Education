@@ -12,6 +12,7 @@ Content-Type: application/json
 
 POST http://{{Server}}/odata/v4/main/{{Entity}}
 Content-Type: application/json
+Authorization: Basic admin:master
 
 {
     "ID": "{{id}}",
@@ -27,8 +28,7 @@ Content-Type: application/json
             "quantity": 5,
             "price": 5000
         }
-    ],
-    "totalAmount": 5000
+    ]
 }
 
 ###
