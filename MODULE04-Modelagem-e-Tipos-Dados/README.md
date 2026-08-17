@@ -6,6 +6,8 @@ Este README serve como índice para a documentação adicional disponível na pa
 
 - [Core Data Services](docs/cds.md)
 - [Namespace](docs/namespace.md)
+- [Aspects](docs/aspects.md)
+- [Tipos Customizados](docs/tipos_customizados.md)
 
 ## Arquivos Markdown na pasta docs
 
