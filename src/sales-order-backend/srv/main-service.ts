@@ -1,5 +1,7 @@
 import cds, { Service, Request } from "@sap/cds";
 import { Customer, Customers, Product, Products, SalesOrderHeaders, SalesOrderItem, SalesOrderItems } from "#cds-models/sales"
+import { CustomerServiceImpl } from "./services/customers/implementation";
+import { customerController } from "./factories/controllers/customer";
 
 export default (srv: Service) => {
     srv.before(['WRITE', 'DELETE'], '*', (request: Request) => {
@@ -8,12 +10,16 @@ export default (srv: Service) => {
         }
     })
 
-    srv.after("READ", "Customers", (result: Customers) => {
-        result.forEach(customer => {
-            if (!customer.email?.includes("@")) {
-                customer.email = `${customer.email}@example.com`;
-            }
-        })
+    srv.after("READ", "Customers", (customersListResults: Customers, request) => {
+        // const service = new CustomerServiceImpl();
+        // service.afterRead(results);
+
+        request.results = customerController.afterRead(customersListResults);
+        // result.forEach(customer => {
+        //     if (!customer.email?.includes("@")) {
+        //         customer.email = `${customer.email}@example.com`;
+        //     }
+        // })
     });
 
     srv.before("CREATE", "SalesOrderHeaders", async (request: Request) => {
@@ -98,5 +104,17 @@ export default (srv: Service) => {
             const updateQuery = UPDATE(Product).set({ stock: foundProduct.stock }).where({ ID: foundProduct.ID });
             await cds.run(updateQuery);
         }
+
+        /** Log Request */
+        const headerString = JSON.stringify(header);
+        const userString = JSON.stringify(request.user);
+        const log = {
+            header_ID: header.ID,
+            userData: userString,
+            orderData: headerString
+        };
+
+        const createLog = INSERT(log).into('sales.SalesOrderLogs');
+        await cds.run(createLog);
     });
 }
