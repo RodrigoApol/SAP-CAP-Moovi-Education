@@ -25,7 +25,7 @@ type CreationPaylaodValidationResult = {
     errorMessage?: Error;
 };
 
-class SalesOrderItemModel {
+export class SalesOrderItemModel {
     constructor(private props: SalesOrderItemProps) { }
 
     public get ID() {
