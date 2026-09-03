@@ -22,7 +22,7 @@ export class CustomerServiceImpl implements CustomerService {
                 .setDefaultEmailDomain()
                 .toObject();
         })
-        console.log(customers)
+
         return customers;
     }
 }

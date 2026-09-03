@@ -25,20 +25,20 @@ export default (srv: Service) => {
     srv.before("CREATE", "SalesOrderHeaders", async (request: Request) => {
         const params = request.data;
 
-        if (!params.customer_ID) {
-            return request.reject(400, "Customer ID is required");
-        };
+        // if (!params.customer_ID) {
+        //     return request.reject(400, "Customer ID is required");
+        // };
 
-        if (!params.items || params.items?.length === 0) {
-            return request.reject(400, "At least one Item is necessary");
-        }
+        // if (!params.items || params.items?.length === 0) {
+        //     return request.reject(400, "At least one Item is necessary");
+        // }
 
-        const customerQuery = SELECT.one.from(Customers).where({ ID: params.customer_ID });
-        const customerResult: Customer = await cds.run(customerQuery);
+        // const customerQuery = SELECT.one.from(Customers).where({ ID: params.customer_ID });
+        // const customerResult: Customer = await cds.run(customerQuery);
 
-        if (!customerResult) {
-            return request.reject(404, `Customer with ID: ${params.customer_ID} not found`)
-        }
+        // if (!customerResult) {
+        //     return request.reject(404, `Customer with ID: ${params.customer_ID} not found`)
+        // }
 
         // Agrupa todos produtos (ID) na ordem de vendas
         const items: SalesOrderItems = params.items;

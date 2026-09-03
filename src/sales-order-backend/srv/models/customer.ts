@@ -5,7 +5,7 @@
 //         email     : String(100);
 // }
 
-type CustomerProps = {
+export type CustomerProps = {
     ID: string,
     firstName: string,
     lastName: string,
@@ -14,6 +14,10 @@ type CustomerProps = {
 
 export class CustomerModel {
     constructor(private props: CustomerProps) { }
+
+    public static create(props: CustomerProps): CustomerModel {
+        return new CustomerModel(props);
+    }
 
     public get ID() {
         return this.props.ID;
@@ -29,10 +33,6 @@ export class CustomerModel {
 
     public get email() {
         return this.props.email;
-    }
-
-    public static create(props: CustomerProps): CustomerModel {
-        return new CustomerModel(props);
     }
 
     public setDefaultEmailDomain() {
