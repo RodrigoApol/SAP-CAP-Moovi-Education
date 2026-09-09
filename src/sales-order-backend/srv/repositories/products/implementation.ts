@@ -5,7 +5,7 @@ import { ProductProps, ProductModel } from "../../models/products";
 import { ProductsRepository } from "./interface";
 
 export class ProductsRepositoryImpl implements ProductsRepository {
-    public async findByIds(ids: ProductProps["ID"][]): Promise<ProductModel[]> {
+    public async findByIds(ids: ProductProps["ID"][]): Promise<ProductModel[] | null> {
         const productsQuery = SELECT.from(Products).where({ ID: ids });
         const products: Products = await cds.run(productsQuery);
 

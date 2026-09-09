@@ -60,18 +60,18 @@ export default (srv: Service) => {
         }
 
         /** Calcular o totalAmount */
-        let totalAmount = 0;
-        items.forEach(item => {
-            totalAmount += (item.price as number) * (item.quantity as number);
-        })
+        // let totalAmount = 0;
+        // items.forEach(item => {
+        //     totalAmount += (item.price as number) * (item.quantity as number);
+        // })
 
-        request.data.totalAmount = totalAmount; // Atribui o valor à requisição
+        // request.data.totalAmount = totalAmount; // Atribui o valor à requisição
 
         /** Aplicar desconto */
-        if (totalAmount > 30000) {
-            const discount = totalAmount * (10 / 100);
-            totalAmount = totalAmount - discount;
-        }
+        // if (totalAmount > 30000) {
+        //     const discount = totalAmount * (10 / 100);
+        //     totalAmount = totalAmount - discount;
+        // }
     });
 
     srv.after("CREATE", "SalesOrderHeaders", async (results: SalesOrderHeaders, request: Request) => {

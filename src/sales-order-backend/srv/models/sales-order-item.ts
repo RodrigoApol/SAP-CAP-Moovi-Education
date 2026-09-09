@@ -8,12 +8,12 @@
 
 import { ProductModel } from "./products";
 
-type SalesOrderItemProps = {
+export type SalesOrderItemProps = {
     ID: string;
     product_ID: string;
     quantity: number;
     price: number;
-    producs: ProductModel[]
+    products: ProductModel[]
 }
 
 type CreationPayload = {
@@ -27,6 +27,10 @@ type CreationPaylaodValidationResult = {
 
 export class SalesOrderItemModel {
     constructor(private props: SalesOrderItemProps) { }
+
+    public static create(props: SalesOrderItemProps): SalesOrderItemModel {
+        return new SalesOrderItemModel(props);
+    }
 
     public get ID() {
         return this.props.ID;
@@ -45,7 +49,7 @@ export class SalesOrderItemModel {
     }
 
     public validateInputPayload(params: CreationPayload): CreationPaylaodValidationResult {
-        const product = this.props.producs.find(p => p.ID === params.product_ID);
+        const product = this.props.products.find(p => p.ID === params.product_ID);
 
         if (!product) {
             return {

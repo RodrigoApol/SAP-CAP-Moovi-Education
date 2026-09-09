@@ -54,14 +54,6 @@ export class SalesOrderHeaderImpl implements SalesOrderHeaderService {
             };
         }
 
-        // const items = params.items?.map(item => SalesOrderItemModel.create({
-        //     ID: item.ID as string,
-        //     product_ID: item.product_ID as string,
-        //     quantity: item.quantity as number,
-        //     price: item.price as number,
-        //     products: products
-        // } as SalesOrderItemProps)) as SalesOrderItemModel[]
-
         const items = await this.getSalesOrderItems(params, products);
 
         const header = SalesOrderHeaderModel.create({

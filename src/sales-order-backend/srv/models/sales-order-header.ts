@@ -19,13 +19,17 @@ type CreationPayload = {
     customer_ID: SalesOrderHeaderProps['customer_ID'];
 };
 
-type CreationPaylaodValidationResult = {
+export type CreationPaylaodValidationResult = {
     hasError: boolean;
     errorMessage?: Error;
 };
 
 export class SalesOrderHeaderModel {
     constructor(private props: SalesOrderHeaderProps) { };
+
+    public static create(props: Omit<SalesOrderHeaderProps, 'totalAmount'>): SalesOrderHeaderModel {
+        return new SalesOrderHeaderModel({ ...props, totalAmount: 0 });
+    }
 
     public get ID() {
         return this.props.ID;
@@ -84,7 +88,7 @@ export class SalesOrderHeaderModel {
         this.totalAmount = this.calculateDiscount(totalAmountValue);
     }
 
-    public calculateDiscount(totalAmount: number): number {
+    private calculateDiscount(totalAmount: number): number {
         if (totalAmount > 30000) {
             const discount = totalAmount * (10 / 100);
             return totalAmount - discount;
