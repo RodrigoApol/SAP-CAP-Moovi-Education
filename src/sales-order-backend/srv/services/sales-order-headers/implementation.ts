@@ -7,7 +7,7 @@ import { CustomerRepository } from "../../repositories/customer/interface";
 import { ProductsRepository } from "../../repositories/products/interface";
 import { SalesOrderHeaderService } from "./interface";
 
-export class SalesOrderHeaderImpl implements SalesOrderHeaderService {
+export class SalesOrderHeaderServiceImpl implements SalesOrderHeaderService {
 
     constructor(
         private readonly productsRepository: ProductsRepository,
@@ -62,7 +62,7 @@ export class SalesOrderHeaderImpl implements SalesOrderHeaderService {
             items: items
         }) as SalesOrderHeaderModel
 
-        header.calculateTotalAmount();
+        // header.calculateTotalAmount();
 
         const customer = await this.getCustomer(params.customer_ID as string);
 
@@ -80,7 +80,8 @@ export class SalesOrderHeaderImpl implements SalesOrderHeaderService {
         }
 
         return {
-            hasError: false
+            hasError: false,
+            totalAmount: header.calculateTotalAmount(),
         }
     }
 

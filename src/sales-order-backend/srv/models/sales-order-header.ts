@@ -22,6 +22,7 @@ type CreationPayload = {
 export type CreationPaylaodValidationResult = {
     hasError: boolean;
     errorMessage?: Error;
+    totalAmount?: number
 };
 
 export class SalesOrderHeaderModel {
@@ -43,9 +44,9 @@ export class SalesOrderHeaderModel {
         return this.props.items;
     }
 
-    private set totalAmount(value: number) {
-        this.totalAmount = value;
-    }
+    // private set totalAmount(value: number) {
+    //     this.totalAmount = value;
+    // }
 
     public validateInputPayload(params: CreationPayload): CreationPaylaodValidationResult {
         if (!params.customer_ID) {
@@ -85,7 +86,8 @@ export class SalesOrderHeaderModel {
             totalAmountValue += (item.price as number) * (item.quantity as number);
         });
 
-        this.totalAmount = this.calculateDiscount(totalAmountValue);
+        // this.totalAmount = this.calculateDiscount(totalAmountValue);
+        return this.calculateDiscount(totalAmountValue);
     }
 
     private calculateDiscount(totalAmount: number): number {

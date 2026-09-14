@@ -1,7 +1,7 @@
 import cds, { Service, Request } from "@sap/cds";
 import { Customer, Customers, Product, Products, SalesOrderHeaders, SalesOrderItem, SalesOrderItems } from "#cds-models/sales"
-import { CustomerServiceImpl } from "./services/customers/implementation";
 import { customerController } from "./factories/controllers/customer";
+import { salesOrderHeaderController } from "./factories/controllers/sales-order-header";
 
 export default (srv: Service) => {
     srv.before(['WRITE', 'DELETE'], '*', (request: Request) => {
@@ -23,7 +23,13 @@ export default (srv: Service) => {
     });
 
     srv.before("CREATE", "SalesOrderHeaders", async (request: Request) => {
-        const params = request.data;
+        const response = await salesOrderHeaderController.beforeCreate(request.data);
+
+        if (response.hasError) {
+            return request.reject(400, response.errorMessage?.message);
+        }
+
+        // const params = request.data;
 
         // if (!params.customer_ID) {
         //     return request.reject(400, "Customer ID is required");
@@ -40,24 +46,24 @@ export default (srv: Service) => {
         //     return request.reject(404, `Customer with ID: ${params.customer_ID} not found`)
         // }
 
-        // Agrupa todos produtos (ID) na ordem de vendas
-        const items: SalesOrderItems = params.items;
-        const productIds = items.map((item: SalesOrderItem) => item.product_ID);
+        // // Agrupa todos produtos (ID) na ordem de vendas
+        // const items: SalesOrderItems = params.items;
+        // const productIds = items.map((item: SalesOrderItem) => item.product_ID);
 
-        const productsQuery = SELECT.from(Products).where({ ID: productIds });
-        const products: Products = await cds.run(productsQuery);
+        // const productsQuery = SELECT.from(Products).where({ ID: productIds });
+        // const products: Products = await cds.run(productsQuery);
 
         // Regras para validar existência e estoque do produto
-        for (const item of items) {
-            const productDb = products.find((product: Product) => product.ID === item.product_ID);
+        // for (const item of items) {
+        //     const productDb = products.find((product: Product) => product.ID === item.product_ID);
 
-            if (!productDb) {
-                request.reject(404, `Product ${item.product_ID} not found`);
-            }
-            if (productDb.stock === 0) {
-                request.reject(400, `No stock available for product ${productDb.name}(${productDb.ID})`);
-            }
-        }
+        //     if (!productDb) {
+        //         request.reject(404, `Product ${item.product_ID} not found`);
+        //     }
+        //     if (productDb.stock === 0) {
+        //         request.reject(400, `No stock available for product ${productDb.name}(${productDb.ID})`);
+        //     }
+        // }
 
         /** Calcular o totalAmount */
         // let totalAmount = 0;
