@@ -81,9 +81,6 @@ export default (srv: Service) => {
     });
 
     srv.after("CREATE", "SalesOrderHeaders", async (results: SalesOrderHeaders, request: Request) => {
-        console.log(results);
-        console.log(request.data);
-
         await salesOrderHeaderController.afterCreate(request.data, request.user);
         // // Garante que o retorno sempre será um Array
         // // const headers = Array.isArray(results) ? results : [results] as SalesOrderHeaders;
