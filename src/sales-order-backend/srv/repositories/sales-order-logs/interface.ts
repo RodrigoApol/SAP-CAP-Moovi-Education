@@ -1,5 +1,5 @@
 import { SalesOrderLogsModel } from "../../models/sales-order-logs";
 
 export interface SalesOrderLogsRepository {
-    create(logs: SalesOrderLogsModel[]): Promise<void>;
+    create(log: SalesOrderLogsModel): Promise<void>;
 }

@@ -11,9 +11,9 @@ GET http://{{Server}}/odata/v4/main/{{Entity}}(ID={{id}})
 ###
 POST http://{{Server}}/odata/v4/main/{{Entity}}
 Content-Type: application/json
+Authorization: Basic admin:master
 
 {
-    "ID": "{{id}}",
     "name": "Computador",
     "price": 4800.50
 }

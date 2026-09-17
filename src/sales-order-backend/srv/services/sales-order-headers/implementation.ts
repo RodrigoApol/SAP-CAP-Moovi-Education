@@ -128,16 +128,16 @@ export class SalesOrderHeaderServiceImpl implements SalesOrderHeaderService {
 
         const user = await this.getLoggedUser(loggedUser);
 
-        const log = SalesOrderLogsModel.create({
-            header_ID: header.ID as string,
-            orderData: JSON.stringify(items),
-            userData: JSON.stringify(user)
-        })
+        // const log = SalesOrderLogsModel.create({
+        //     header_ID: header.ID as string,
+        //     orderData: JSON.stringify(items),
+        //     userData: JSON.stringify(user)
+        // })
 
-        logs.push(log);
+        // logs.push(log);
 
 
-        this.salesOrderLogsRepository.create(logs);
+        // this.salesOrderLogsRepository.create(logs);
     }
 
 }

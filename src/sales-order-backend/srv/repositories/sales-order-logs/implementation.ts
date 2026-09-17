@@ -3,10 +3,10 @@ import { SalesOrderLogsModel } from "../../models/sales-order-logs";
 import { SalesOrderLogsRepository } from "./interface";
 
 export class SalesOrderLogsRepositoryImpl implements SalesOrderLogsRepository {
-    public async create(logs: SalesOrderLogsModel[]): Promise<void> {
-        const logsObjects = logs.map(log => log.toObject());
+    public async create(log: SalesOrderLogsModel): Promise<void> {
+        const logObject = log.toObject();
 
-        const insert = INSERT(logsObjects).into('sales.SalesOrderLogs');
+        const insert = INSERT(logObject).into('sales.SalesOrderLogs');
         await cds.run(insert);
     }
 }
