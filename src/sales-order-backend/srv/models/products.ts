@@ -34,4 +34,23 @@ export class ProductModel {
     public get stock() {
         return this.props.stock;
     }
+
+    private set stock(stock: number) {
+        this.props.stock = stock;
+    }
+
+    public sell(amount: number): { hasError: boolean, errorMessage?: Error, quantityAvailable?: number } {
+        if (this.stock < amount) {
+            return {
+                hasError: true,
+                errorMessage: new Error("Quantity in stock isn't enough"),
+                quantityAvailable: this.stock
+            }
+        }
+        this.stock = amount;
+        return {
+            hasError: false,
+            quantityAvailable: this.stock
+        }
+    }
 }

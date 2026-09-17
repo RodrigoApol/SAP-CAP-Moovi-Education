@@ -81,46 +81,52 @@ export default (srv: Service) => {
     });
 
     srv.after("CREATE", "SalesOrderHeaders", async (results: SalesOrderHeaders, request: Request) => {
-        // Garante que o retorno sempre será um Array
-        // const headers = Array.isArray(results) ? results : [results] as SalesOrderHeaders;
+        console.log(results);
+        console.log(request.data);
 
-        const header = request.data;
-        const items = header.items as SalesOrderItems;
+        await salesOrderHeaderController.afterCreate(request.data, request.user);
+        // // Garante que o retorno sempre será um Array
+        // // const headers = Array.isArray(results) ? results : [results] as SalesOrderHeaders;
+        // console.log(request.user)
+        // const header = request.data;
+        // const items = header.items as SalesOrderItems;
 
-        const productsData = items.map(item => ({
-            ID: item.product_ID as string,
-            quantity: item.quantity as number
-        }));
+        // const productsData = items.map(item => ({
+        //     ID: item.product_ID as string,
+        //     quantity: item.quantity as number
+        // }));
 
-        // for (const header of headers) {
-        //     const items = header.items as SalesOrderItems;
-        //     const productsData = items.map(item => ({
-        //         ID: item.product_ID as string,
-        //         quantity: item.quantity as number
-        //     }));
+        // // for (const header of headers) {
+        // //     const items = header.items as SalesOrderItems;
+        // //     const productsData = items.map(item => ({
+        // //         ID: item.product_ID as string,
+        // //         quantity: item.quantity as number
+        // //     }));
+        // // }
+
+        // const productIds = productsData.map((productData) => productData.ID);
+        // const productsQuery = SELECT.from(Products).where({ ID: productIds });
+        // const products: Products = await cds.run(productsQuery);
+
+        // for (const productData of productsData) {
+        //     const foundProduct = products.find(product => product.ID === productData.ID) as Product;
+        //     foundProduct.stock = (foundProduct.stock as number) - productData.quantity;
+        //     const updateQuery = UPDATE(Product).set({ stock: foundProduct.stock }).where({ ID: foundProduct.ID });
+        //     await cds.run(updateQuery);
         // }
 
-        const productIds = productsData.map((productData) => productData.ID);
-        const productsQuery = SELECT.from(Products).where({ ID: productIds });
-        const products: Products = await cds.run(productsQuery);
+        // /** Log Request */
+        // const headerString = JSON.stringify(header);
+        // const userString = JSON.stringify(request.user);
+        // const log = {
+        //     header_ID: header.ID,
+        //     userData: userString,
+        //     orderData: headerString
+        // };
 
-        for (const productData of productsData) {
-            const foundProduct = products.find(product => product.ID === productData.ID) as Product;
-            foundProduct.stock = (foundProduct.stock as number) - productData.quantity;
-            const updateQuery = UPDATE(Product).set({ stock: foundProduct.stock }).where({ ID: foundProduct.ID });
-            await cds.run(updateQuery);
-        }
+        // console.log(log)
 
-        /** Log Request */
-        const headerString = JSON.stringify(header);
-        const userString = JSON.stringify(request.user);
-        const log = {
-            header_ID: header.ID,
-            userData: userString,
-            orderData: headerString
-        };
-
-        const createLog = INSERT(log).into('sales.SalesOrderLogs');
-        await cds.run(createLog);
+        // const createLog = INSERT(log).into('sales.SalesOrderLogs');
+        // await cds.run(createLog);
     });
 }

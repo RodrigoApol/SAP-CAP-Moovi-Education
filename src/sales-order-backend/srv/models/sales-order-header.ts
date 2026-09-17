@@ -19,6 +19,11 @@ type CreationPayload = {
     customer_ID: SalesOrderHeaderProps['customer_ID'];
 };
 
+type ProductDataResponse = {
+    ID: string;
+    quantity: number;
+}
+
 export type CreationPaylaodValidationResult = {
     hasError: boolean;
     errorMessage?: Error;
@@ -97,5 +102,14 @@ export class SalesOrderHeaderModel {
         } else {
             return totalAmount;
         }
+    }
+
+    public getProductData(): ProductDataResponse[] {
+        return this.items.map(item => {
+            return {
+                ID: item.ID,
+                quantity: item.quantity
+            }
+        });
     }
 }

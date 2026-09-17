@@ -21,4 +21,12 @@ export class ProductsRepositoryImpl implements ProductsRepository {
         })
     }
 
+    public async updateStock(product: ProductModel): Promise<void> {
+        const query = UPDATE(Products)
+            .set({ stock: product.stock })
+            .where({ ID: product.ID });
+
+        await cds.run(query);
+    }
+
 }
