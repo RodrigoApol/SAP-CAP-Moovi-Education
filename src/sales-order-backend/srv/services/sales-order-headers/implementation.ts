@@ -113,7 +113,6 @@ export class SalesOrderHeaderServiceImpl implements SalesOrderHeaderService {
 
     public async afterCreate(params: SalesOrderHeader, loggedUser: User): Promise<void> {
         const header = params;
-        const logs: SalesOrderLogsModel[] = [];
 
         const products = await this.getProducts(header.items) as ProductModel[];
         const items = await this.getSalesOrderItems(header, products);
@@ -128,16 +127,14 @@ export class SalesOrderHeaderServiceImpl implements SalesOrderHeaderService {
 
         const user = await this.getLoggedUser(loggedUser);
 
-        // const log = SalesOrderLogsModel.create({
-        //     header_ID: header.ID as string,
-        //     orderData: JSON.stringify(items),
-        //     userData: JSON.stringify(user)
-        // })
-
-        // logs.push(log);
+        const log = SalesOrderLogsModel.create({
+            header_ID: header.ID as string,
+            orderData: JSON.stringify(items),
+            userData: JSON.stringify(user)
+        });
 
 
-        // this.salesOrderLogsRepository.create(logs);
+        this.salesOrderLogsRepository.create(log);
     }
 
 }
