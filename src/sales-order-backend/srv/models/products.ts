@@ -10,10 +10,10 @@ export type ProductProps = {
     name: string;
     price: number;
     stock: number;
-}
+};
 
 export class ProductModel {
-    constructor(private props: ProductProps) { }
+    constructor(private props: ProductProps) {}
 
     public static create(props: ProductProps): ProductModel {
         return new ProductModel(props);
@@ -39,7 +39,7 @@ export class ProductModel {
         this.props.stock = stock;
     }
 
-    public sell(amount: number): { hasError: boolean, errorMessage?: Error, quantityAvailable?: number } {
+    public sell(amount: number): { hasError: boolean; errorMessage?: Error; quantityAvailable?: number } {
         if (this.stock < amount) {
             return {
                 hasError: true,
@@ -53,4 +53,4 @@ export class ProductModel {
             quantityAvailable: this.stock
         };
     }
-};
+}

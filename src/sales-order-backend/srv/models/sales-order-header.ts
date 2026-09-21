@@ -9,10 +9,10 @@
 import { SalesOrderItemModel } from "./sales-order-item";
 
 type SalesOrderHeaderProps = {
-    ID: string,
-    customer_ID: string,
-    items: SalesOrderItemModel[],
-    totalAmount: number
+    ID: string;
+    customer_ID: string;
+    items: SalesOrderItemModel[];
+    totalAmount: number;
 };
 
 type CreationPayload = {
@@ -22,16 +22,16 @@ type CreationPayload = {
 type ProductDataResponse = {
     ID: string;
     quantity: number;
-}
+};
 
 export type CreationPaylaodValidationResult = {
     hasError: boolean;
     errorMessage?: Error;
-    totalAmount?: number
+    totalAmount?: number;
 };
 
 export class SalesOrderHeaderModel {
-    constructor(private props: SalesOrderHeaderProps) { };
+    constructor(private props: SalesOrderHeaderProps) {}
 
     public static create(props: Omit<SalesOrderHeaderProps, "totalAmount">): SalesOrderHeaderModel {
         return new SalesOrderHeaderModel({ ...props, totalAmount: 0 });
@@ -62,7 +62,7 @@ export class SalesOrderHeaderModel {
         }
 
         const itemsValidationMessages: string[] = [];
-        this.items.forEach(item => {
+        this.items.forEach((item) => {
             const validationResult = item.validateInputPayload({ product_ID: item.podruct_ID });
 
             if (validationResult.hasError === true) {
@@ -82,12 +82,11 @@ export class SalesOrderHeaderModel {
         return {
             hasError: false
         };
-
     }
 
     public calculateTotalAmount() {
         let totalAmountValue = 0;
-        this.items.forEach(item => {
+        this.items.forEach((item) => {
             totalAmountValue += (item.price as number) * (item.quantity as number);
         });
 
@@ -105,7 +104,7 @@ export class SalesOrderHeaderModel {
     }
 
     public getProductData(): ProductDataResponse[] {
-        return this.items.map(item => {
+        return this.items.map((item) => {
             return {
                 ID: item.ID,
                 quantity: item.quantity

@@ -5,7 +5,6 @@ import { SalesOrderHeaderService } from "../../services/sales-order-headers/inte
 import { SalesOrderHeaderServiceImpl } from "../../services/sales-order-headers/implementation";
 import { SalesOrderLogsRepositoryImpl } from "../../repositories/sales-order-logs/implementation";
 
-
 const makeSalesOrderHeaderService = (): SalesOrderHeaderService => {
     const customerRepository = new CustomerRepositoryImpl();
     const productRepository = new ProductsRepositoryImpl();

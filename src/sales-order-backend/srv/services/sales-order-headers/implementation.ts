@@ -15,11 +15,11 @@ import { User } from "@sap/cds";
 import { SalesOrderHeader, SalesOrderItem } from "#cds-models/sales";
 
 export class SalesOrderHeaderServiceImpl implements SalesOrderHeaderService {
-
     constructor(
         private readonly productsRepository: ProductsRepository,
         private readonly customersRepository: CustomerRepository,
-        private readonly salesOrderLogsRepository: SalesOrderLogsRepository) { }
+        private readonly salesOrderLogsRepository: SalesOrderLogsRepository
+    ) {}
 
     private async getProducts(items: SalesOrderHeader["items"]): Promise<ProductModel[] | Error> {
         const productIds: string[] = items?.map((item: SalesOrderItem) => item.product_ID) as string[];
@@ -43,13 +43,15 @@ export class SalesOrderHeaderServiceImpl implements SalesOrderHeaderService {
     }
 
     private async getSalesOrderItems(params: SalesOrderHeader, products: ProductModel[]): Promise<SalesOrderItemModel[]> {
-        return params.items?.map(item => SalesOrderItemModel.create({
-            ID: item.ID as string,
-            product_ID: item.product_ID as string,
-            quantity: item.quantity as number,
-            price: item.price as number,
-            products: products
-        })) as SalesOrderItemModel[];
+        return params.items?.map((item) =>
+            SalesOrderItemModel.create({
+                ID: item.ID as string,
+                product_ID: item.product_ID as string,
+                quantity: item.quantity as number,
+                price: item.price as number,
+                products: products
+            })
+        ) as SalesOrderItemModel[];
     }
 
     private async getSalesOrderHeader(params: SalesOrderHeader, items: SalesOrderItemModel[]): Promise<SalesOrderHeaderModel> {
@@ -110,20 +112,20 @@ export class SalesOrderHeaderServiceImpl implements SalesOrderHeaderService {
 
         return {
             hasError: false,
-            totalAmount: header.calculateTotalAmount(),
+            totalAmount: header.calculateTotalAmount()
         };
     }
 
     public async afterCreate(params: SalesOrderHeader, loggedUser: User): Promise<void> {
         const header = params;
 
-        const products = await this.getProducts(header.items) as ProductModel[];
+        const products = (await this.getProducts(header.items)) as ProductModel[];
         const items = await this.getSalesOrderItems(header, products);
         const salesOrderHeaderModel = await this.getSalesOrderHeader(header, items);
         const productData = salesOrderHeaderModel.getProductData();
 
         for (const product of products) {
-            const foundProduct = productData.find(pd => pd.ID === product.ID);
+            const foundProduct = productData.find((pd) => pd.ID === product.ID);
             product.sell(foundProduct?.quantity as number);
             await this.productsRepository.updateStock(product);
         }
@@ -136,8 +138,6 @@ export class SalesOrderHeaderServiceImpl implements SalesOrderHeaderService {
             userData: JSON.stringify(user)
         });
 
-
         this.salesOrderLogsRepository.create(log);
     }
-
 }

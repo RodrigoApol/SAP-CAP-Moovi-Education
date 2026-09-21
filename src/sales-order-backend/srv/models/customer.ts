@@ -6,14 +6,14 @@
 // }
 
 export type CustomerProps = {
-    ID: string,
-    firstName: string,
-    lastName: string,
-    email: string
-}
+    ID: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+};
 
 export class CustomerModel {
-    constructor(private props: CustomerProps) { }
+    constructor(private props: CustomerProps) {}
 
     public static create(props: CustomerProps): CustomerModel {
         return new CustomerModel(props);
@@ -48,7 +48,7 @@ export class CustomerModel {
             ID: this.props.ID,
             firstName: this.props.firstName,
             lastName: this.props.lastName,
-            email: this.props.email,
+            email: this.props.email
         };
-    };
-};
+    }
+}

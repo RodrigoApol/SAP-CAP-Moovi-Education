@@ -7,7 +7,7 @@ import { SalesOrderHeaderController } from "./interface";
 import { SalesOrderHeaderService } from "../../services/sales-order-headers/interface";
 
 export class SalesOrderHeaderControllerImpl implements SalesOrderHeaderController {
-    constructor(private readonly service: SalesOrderHeaderService) { }
+    constructor(private readonly service: SalesOrderHeaderService) {}
 
     beforeCreate(params: SalesOrderHeader): Promise<CreationPaylaodValidationResult> {
         return this.service.beforeCreate(params);

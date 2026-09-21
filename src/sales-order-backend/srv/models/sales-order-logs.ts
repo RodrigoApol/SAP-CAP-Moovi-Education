@@ -2,11 +2,11 @@ type SalesOrderLogsProps = {
     ID: string;
     header_ID: string;
     userData: string;
-    orderData: string
-}
+    orderData: string;
+};
 
 export class SalesOrderLogsModel {
-    constructor(private props: SalesOrderLogsProps) { }
+    constructor(private props: SalesOrderLogsProps) {}
 
     public static create(props: Omit<SalesOrderLogsProps, "ID">) {
         return new SalesOrderLogsModel({ ...props, ID: crypto.randomUUID() });
