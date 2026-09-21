@@ -1,6 +1,7 @@
-import { Customers } from "#cds-models/sales";
 import { CustomerModel } from "../../models/customer";
 import { CustomerService } from "./interface";
+
+import { Customers } from "#cds-models/sales";
 
 export class CustomerServiceImpl implements CustomerService {
     public afterRead(customersList: Customers): Customers {
@@ -21,7 +22,7 @@ export class CustomerServiceImpl implements CustomerService {
             return customer
                 .setDefaultEmailDomain()
                 .toObject();
-        })
+        });
 
         return customers;
     }

@@ -45,12 +45,12 @@ export class ProductModel {
                 hasError: true,
                 errorMessage: new Error("Quantity in stock isn't enough"),
                 quantityAvailable: this.stock
-            }
+            };
         }
         this.stock = amount;
         return {
             hasError: false,
             quantityAvailable: this.stock
-        }
+        };
     }
-}
+};

@@ -1,15 +1,18 @@
-import { SalesOrderHeader, SalesOrderHeaders, SalesOrderItem } from "#cds-models/sales";
-import { User } from "@sap/cds";
-import { CustomerModel } from "../../models/customer";
-import { ProductModel } from "../../models/products";
 import { CreationPaylaodValidationResult, SalesOrderHeaderModel } from "../../models/sales-order-header";
-import { SalesOrderItemModel, SalesOrderItemProps } from "../../models/sales-order-item";
-import { SalesOrderLogsModel } from "../../models/sales-order-logs";
+
+import { CustomerModel } from "../../models/customer";
 import { CustomerRepository } from "../../repositories/customer/interface";
+import { ProductModel } from "../../models/products";
 import { ProductsRepository } from "../../repositories/products/interface";
-import { SalesOrderLogsRepository } from "../../repositories/sales-order-logs/interface";
+
 import { SalesOrderHeaderService } from "./interface";
+import { SalesOrderItemModel } from "../../models/sales-order-item";
+import { SalesOrderLogsModel } from "../../models/sales-order-logs";
+import { SalesOrderLogsRepository } from "../../repositories/sales-order-logs/interface";
+
 import { LoggedUserModel } from "../../models/logged-user";
+import { User } from "@sap/cds";
+import { SalesOrderHeader, SalesOrderItem } from "#cds-models/sales";
 
 export class SalesOrderHeaderServiceImpl implements SalesOrderHeaderService {
 
@@ -18,18 +21,18 @@ export class SalesOrderHeaderServiceImpl implements SalesOrderHeaderService {
         private readonly customersRepository: CustomerRepository,
         private readonly salesOrderLogsRepository: SalesOrderLogsRepository) { }
 
-    private async getProducts(items: SalesOrderHeader['items']): Promise<ProductModel[] | Error> {
+    private async getProducts(items: SalesOrderHeader["items"]): Promise<ProductModel[] | Error> {
         const productIds: string[] = items?.map((item: SalesOrderItem) => item.product_ID) as string[];
         const products = await this.productsRepository.findByIds(productIds);
 
         if (!products) {
-            return new Error('Not found any product');
+            return new Error("Not found any product");
         }
 
         return products;
     }
 
-    private async getCustomer(ID: SalesOrderHeader['ID']): Promise<CustomerModel | Error> {
+    private async getCustomer(ID: SalesOrderHeader["ID"]): Promise<CustomerModel | Error> {
         const customer = await this.customersRepository.findById(ID as string);
 
         if (!customer) {
@@ -46,7 +49,7 @@ export class SalesOrderHeaderServiceImpl implements SalesOrderHeaderService {
             quantity: item.quantity as number,
             price: item.price as number,
             products: products
-        })) as SalesOrderItemModel[]
+        })) as SalesOrderItemModel[];
     }
 
     private async getSalesOrderHeader(params: SalesOrderHeader, items: SalesOrderItemModel[]): Promise<SalesOrderHeaderModel> {
@@ -54,9 +57,9 @@ export class SalesOrderHeaderServiceImpl implements SalesOrderHeaderService {
             ID: params.ID as string,
             customer_ID: params.customer_ID as string,
             items: items
-        }) as SalesOrderHeaderModel
+        }) as SalesOrderHeaderModel;
 
-        return header
+        return header;
     }
 
     private async getLoggedUser(loggedUser: User) {
@@ -108,7 +111,7 @@ export class SalesOrderHeaderServiceImpl implements SalesOrderHeaderService {
         return {
             hasError: false,
             totalAmount: header.calculateTotalAmount(),
-        }
+        };
     }
 
     public async afterCreate(params: SalesOrderHeader, loggedUser: User): Promise<void> {
@@ -120,7 +123,7 @@ export class SalesOrderHeaderServiceImpl implements SalesOrderHeaderService {
         const productData = salesOrderHeaderModel.getProductData();
 
         for (const product of products) {
-            const foundProduct = productData.find(pd => pd.ID === product.ID)
+            const foundProduct = productData.find(pd => pd.ID === product.ID);
             product.sell(foundProduct?.quantity as number);
             await this.productsRepository.updateStock(product);
         }

@@ -16,7 +16,7 @@ type SalesOrderHeaderProps = {
 };
 
 type CreationPayload = {
-    customer_ID: SalesOrderHeaderProps['customer_ID'];
+    customer_ID: SalesOrderHeaderProps["customer_ID"];
 };
 
 type ProductDataResponse = {
@@ -33,7 +33,7 @@ export type CreationPaylaodValidationResult = {
 export class SalesOrderHeaderModel {
     constructor(private props: SalesOrderHeaderProps) { };
 
-    public static create(props: Omit<SalesOrderHeaderProps, 'totalAmount'>): SalesOrderHeaderModel {
+    public static create(props: Omit<SalesOrderHeaderProps, "totalAmount">): SalesOrderHeaderModel {
         return new SalesOrderHeaderModel({ ...props, totalAmount: 0 });
     }
 
@@ -71,17 +71,17 @@ export class SalesOrderHeaderModel {
         });
 
         if (itemsValidationMessages.length > 0) {
-            const message: string = itemsValidationMessages.join('/n - ');
+            const message: string = itemsValidationMessages.join("/n - ");
 
             return {
                 hasError: true,
                 errorMessage: new Error(message)
-            }
+            };
         }
 
         return {
             hasError: false
-        }
+        };
 
     }
 
@@ -109,7 +109,7 @@ export class SalesOrderHeaderModel {
             return {
                 ID: item.ID,
                 quantity: item.quantity
-            }
+            };
         });
     }
 }

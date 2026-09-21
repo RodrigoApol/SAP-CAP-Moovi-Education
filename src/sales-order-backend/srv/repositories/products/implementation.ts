@@ -15,10 +15,10 @@ export class ProductsRepositoryImpl implements ProductsRepository {
                 name: p.name as string,
                 price: p.price as number,
                 stock: p.stock as number
-            }
+            };
 
-            return ProductModel.create(props)
-        })
+            return ProductModel.create(props);
+        });
     }
 
     public async updateStock(product: ProductModel): Promise<void> {

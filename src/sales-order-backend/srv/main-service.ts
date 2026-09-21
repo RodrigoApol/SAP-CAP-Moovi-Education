@@ -1,14 +1,17 @@
-import cds, { Service, Request } from "@sap/cds";
-import { Customer, Customers, Product, Products, SalesOrderHeaders, SalesOrderItem, SalesOrderItems } from "#cds-models/sales"
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import cds, { Request, Service } from "@sap/cds";
+
 import { customerController } from "./factories/controllers/customer";
+import { Customers, SalesOrderHeaders } from "#cds-models/sales";
+
 import { salesOrderHeaderController } from "./factories/controllers/sales-order-header";
 
 export default (srv: Service) => {
-    srv.before(['WRITE', 'DELETE'], '*', (request: Request) => {
+    srv.before(["WRITE", "DELETE"], "*", (request: Request) => {
         if (!request.user.is("admin")) {
-            return request.reject(403, "Sem acesso ao recurso.")
+            return request.reject(403, "Sem acesso ao recurso.");
         }
-    })
+    });
 
     srv.after("READ", "Customers", (customersListResults: Customers, request) => {
         // const service = new CustomerServiceImpl();
@@ -126,4 +129,4 @@ export default (srv: Service) => {
         // const createLog = INSERT(log).into('sales.SalesOrderLogs');
         // await cds.run(createLog);
     });
-}
+};

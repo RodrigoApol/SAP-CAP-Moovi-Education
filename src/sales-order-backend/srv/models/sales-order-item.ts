@@ -17,7 +17,7 @@ export type SalesOrderItemProps = {
 }
 
 type CreationPayload = {
-    product_ID: SalesOrderItemProps['product_ID'];
+    product_ID: SalesOrderItemProps["product_ID"];
 };
 
 type CreationPaylaodValidationResult = {
@@ -55,16 +55,16 @@ export class SalesOrderItemModel {
             return {
                 hasError: true,
                 errorMessage: new Error(`Product ${params.product_ID} not found`)
-            }
+            };
         } else if (product.stock === 0) {
             return {
                 hasError: true,
                 errorMessage: new Error(`No stock available for product ${product.name}(${product.ID})`)
-            }
+            };
         } else {
             return {
                 hasError: false
-            }
+            };
         }
     }
 }
