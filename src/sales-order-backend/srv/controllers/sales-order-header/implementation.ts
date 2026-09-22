@@ -1,13 +1,13 @@
-import { SalesOrderHeader } from "#cds-models/sales";
 import { User } from "@sap/cds";
 
-import { CreationPaylaodValidationResult } from "../../models/sales-order-header";
+import { SalesOrderHeader } from "@models/sales";
 
-import { SalesOrderHeaderController } from "./interface";
-import { SalesOrderHeaderService } from "../../services/sales-order-headers/interface";
+import { CreationPaylaodValidationResult } from "@/models/sales-order-header";
+import { SalesOrderHeaderController } from "@/controllers/sales-order-header/interface";
+import { SalesOrderHeaderService } from "@/services/sales-order-headers/interface";
 
 export class SalesOrderHeaderControllerImpl implements SalesOrderHeaderController {
-    constructor(private readonly service: SalesOrderHeaderService) {}
+    constructor(private readonly service: SalesOrderHeaderService) { }
 
     beforeCreate(params: SalesOrderHeader): Promise<CreationPaylaodValidationResult> {
         return this.service.beforeCreate(params);

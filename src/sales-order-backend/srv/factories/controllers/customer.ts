@@ -1,6 +1,6 @@
-import { CustomerController } from "../../controllers/customer/interface";
-import { CustomerControllerImpl } from "../../controllers/customer/implementation";
-import { customerService } from "../services/customer";
+import { CustomerController } from "@/controllers/customer/interface";
+import { CustomerControllerImpl } from "@/controllers/customer/implementation";
+import { customerService } from "@/factories/services/customer";
 
 const makeCustomerController = (): CustomerController => {
     return new CustomerControllerImpl(customerService);

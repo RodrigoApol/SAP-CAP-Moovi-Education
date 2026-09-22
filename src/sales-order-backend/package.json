@@ -2,7 +2,8 @@
   "name": "sales-order-backend",
   "version": "1.0.0",
   "dependencies": {
-    "@sap/cds": "^10"
+    "@sap/cds": "^10",
+    "module-alias": "^2.3.4"
   },
   "devDependencies": {
     "@cap-js/cds-typer": "^0.40.2",
@@ -27,6 +28,6 @@
   },
   "private": true,
   "imports": {
-    "#cds-models/*": "./@cds-models/*/index.js"
+    "@models/*": "./@cds-models/*/index.js"
   }
 }

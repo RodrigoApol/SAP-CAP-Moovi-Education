@@ -36,6 +36,10 @@ export default defineConfig([
           ignoreRestSiblings: true
         }
       ],
+      "@typescript-eslint/no-require-imports": [
+        "warn",
+        { allowAsImport: true }
+      ],
       "eol-last": "error",
       // indent: [
       //   "error",

@@ -1,10 +1,11 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import cds, { Request, Service } from "@sap/cds";
+import "./configs/module-alias";
 
-import { customerController } from "./factories/controllers/customer";
-import { Customers, SalesOrderHeaders } from "#cds-models/sales";
+import { Request, Service } from "@sap/cds";
 
-import { salesOrderHeaderController } from "./factories/controllers/sales-order-header";
+import { Customers, SalesOrderHeaders } from "@models/sales";
+
+import { customerController } from "@/factories/controllers/customer";
+import { salesOrderHeaderController } from "@/factories/controllers/sales-order-header";
 
 export default (srv: Service) => {
     srv.before(["WRITE", "DELETE"], "*", (request: Request) => {

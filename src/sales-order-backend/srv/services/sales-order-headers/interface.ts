@@ -1,7 +1,8 @@
-import { SalesOrderHeader } from "#cds-models/sales";
 import { User } from "@sap/cds";
 
-import { CreationPaylaodValidationResult } from "../../models/sales-order-header";
+import { SalesOrderHeader } from "@models/sales";
+
+import { CreationPaylaodValidationResult } from "@/models/sales-order-header";
 
 export interface SalesOrderHeaderService {
     beforeCreate(params: SalesOrderHeader): Promise<CreationPaylaodValidationResult>;

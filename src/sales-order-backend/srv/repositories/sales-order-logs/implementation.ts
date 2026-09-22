@@ -1,5 +1,5 @@
-import { SalesOrderLogsModel } from "../../models/sales-order-logs";
-import { SalesOrderLogsRepository } from "./interface";
+import { SalesOrderLogsModel } from "@/models/sales-order-logs";
+import { SalesOrderLogsRepository } from "@/repositories/sales-order-logs/interface";
 
 import cds from "@sap/cds";
 

@@ -1,8 +1,9 @@
 import cds from "@sap/cds";
 
-import { CustomerRepository } from "./interface";
-import { Customer, Customers } from "#cds-models/sales";
-import { CustomerModel, CustomerProps } from "../../models/customer";
+import { Customer, Customers } from "@models/sales";
+
+import { CustomerRepository } from "@/repositories/customer/interface";
+import { CustomerModel, CustomerProps } from "@/models/customer";
 
 export class CustomerRepositoryImpl implements CustomerRepository {
     public async findById(id: CustomerProps["ID"]): Promise<CustomerModel | null> {

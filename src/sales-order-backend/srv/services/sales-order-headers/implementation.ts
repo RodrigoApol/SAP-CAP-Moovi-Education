@@ -1,25 +1,24 @@
-import { CreationPaylaodValidationResult, SalesOrderHeaderModel } from "../../models/sales-order-header";
-
-import { CustomerModel } from "../../models/customer";
-import { CustomerRepository } from "../../repositories/customer/interface";
-import { ProductModel } from "../../models/products";
-import { ProductsRepository } from "../../repositories/products/interface";
-
-import { SalesOrderHeaderService } from "./interface";
-import { SalesOrderItemModel } from "../../models/sales-order-item";
-import { SalesOrderLogsModel } from "../../models/sales-order-logs";
-import { SalesOrderLogsRepository } from "../../repositories/sales-order-logs/interface";
-
-import { LoggedUserModel } from "../../models/logged-user";
 import { User } from "@sap/cds";
-import { SalesOrderHeader, SalesOrderItem } from "#cds-models/sales";
+
+import { SalesOrderHeader, SalesOrderItem } from "@models/sales";
+
+import { CreationPaylaodValidationResult, SalesOrderHeaderModel } from "@/models/sales-order-header";
+import { CustomerModel } from "@/models/customer";
+import { CustomerRepository } from "@/repositories/customer/interface";
+import { ProductModel } from "@/models/products";
+import { ProductsRepository } from "@/repositories/products/interface";
+import { SalesOrderHeaderService } from "@/services/sales-order-headers/interface";
+import { SalesOrderItemModel } from "@/models/sales-order-item";
+import { SalesOrderLogsModel } from "@/models/sales-order-logs";
+import { SalesOrderLogsRepository } from "@/repositories/sales-order-logs/interface";
+import { LoggedUserModel } from "@/models/logged-user";
 
 export class SalesOrderHeaderServiceImpl implements SalesOrderHeaderService {
     constructor(
         private readonly productsRepository: ProductsRepository,
         private readonly customersRepository: CustomerRepository,
         private readonly salesOrderLogsRepository: SalesOrderLogsRepository
-    ) {}
+    ) { }
 
     private async getProducts(items: SalesOrderHeader["items"]): Promise<ProductModel[] | Error> {
         const productIds: string[] = items?.map((item: SalesOrderItem) => item.product_ID) as string[];

@@ -1,8 +1,9 @@
 import cds from "@sap/cds";
 
-import { Products } from "#cds-models/sales";
-import { ProductsRepository } from "./interface";
-import { ProductModel, ProductProps } from "../../models/products";
+import { Products } from "@models/sales";
+
+import { ProductsRepository } from "@/repositories/products/interface";
+import { ProductModel, ProductProps } from "@/models/products";
 
 export class ProductsRepositoryImpl implements ProductsRepository {
     public async findByIds(ids: ProductProps["ID"][]): Promise<ProductModel[] | null> {
