@@ -18,7 +18,8 @@
     "prettier": "^3.9.8",
     "tsx": "^4",
     "typescript": "^6.0.0",
-    "typescript-eslint": "^8.70.0"
+    "typescript-eslint": "^8.70.0",
+    "@sap/eslint-plugin-cds": "^4"
   },
   "scripts": {
     "start": "cds-serve",
@@ -26,8 +27,5 @@
     "lint": "eslint ./srv",
     "fix-lint": "eslint --fix ./srv"
   },
-  "private": true,
-  "imports": {
-    "@models/*": "./@cds-models/*/index.js"
-  }
+  "private": true
 }

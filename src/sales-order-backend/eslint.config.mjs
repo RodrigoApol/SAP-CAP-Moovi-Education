@@ -1,10 +1,12 @@
 import { defineConfig } from "eslint/config";
+import cdsPlugin from "@sap/eslint-plugin-cds";
 import globals from "globals";
 import js from "@eslint/js";
 import prettier from "eslint-plugin-prettier";
 import tseslint from "typescript-eslint";
 
 export default defineConfig([
+  cdsPlugin.configs.recommended,
   {
     files: ["**/*.{mjs,js,ts}"],
     plugins: {
@@ -36,10 +38,7 @@ export default defineConfig([
           ignoreRestSiblings: true
         }
       ],
-      "@typescript-eslint/no-require-imports": [
-        "warn",
-        { allowAsImport: true }
-      ],
+      "@typescript-eslint/no-require-imports": ["warn", { allowAsImport: true }],
       "eol-last": "error",
       // indent: [
       //   "error",
