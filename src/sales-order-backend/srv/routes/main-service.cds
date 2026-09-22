@@ -1,4 +1,4 @@
-using {sales as db} from '../db/schema';
+using {sales as db} from '../../db/schema';
 
 service MainService {
     entity SalesOrderHeaders as projection on db.SalesOrderHeaders;

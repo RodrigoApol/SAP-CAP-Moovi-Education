@@ -1,4 +1,4 @@
-import { Customers } from "#cds-models/sales";
+import { Customers } from "@models/sales";
 
 import { CustomerController } from "@/controllers/customer/interface";
 import { CustomerService } from "@/services/customers/interface";
