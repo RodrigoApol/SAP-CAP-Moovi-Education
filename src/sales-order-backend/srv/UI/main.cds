@@ -1,10 +1,11 @@
 using {MainService as ms} from '../routes/main-service';
 
-annotate ms.SalesOrderHeaders with @(UI: {
+annotate ms.SalesOrderHeaders with @(UI : {
     SelectionFields: [
         ID,
         totalAmount,
         customer_ID,
+        status_ID,
         createdAt,
         modifiedAt
     ],
@@ -35,12 +36,21 @@ annotate ms.SalesOrderHeaders with @(UI: {
         },
         {
             $Type             : 'UI.DataField',
-            Label             : 'Cliente',
             @HTML5.CssDefaults: {
                 $Type: 'HTML5.CssDefaultsType',
                 width: '5%',
             },
             Value             : customer.firstName
+        },
+        {
+            $Type                    : 'UI.DataField',
+            Criticality              : (status.ID = 'REJECTED' ? 1 : (status.ID = 'PENDING' ? 2 : 3)),
+            CriticalityRepresentation: #WithoutIcon,
+            @HTML5.CssDefaults       : {
+                $Type: 'HTML5.CssDefaultsType',
+                width: '10%',
+            },
+            Value                    : status_ID
         }
     ],
 }) {
@@ -80,6 +90,25 @@ annotate ms.SalesOrderHeaders with @(UI: {
         }
     )
     customer;
+    @(
+        title : 'Status',
+        Common: {
+            Label          : 'Status',
+            Text           : status.description,
+            TextArrangement: #TextOnly,
+            ValueListWithFixedValues,
+            ValueList      : {
+                $Type         : 'Common.ValueListType',
+                CollectionPath: 'SalesOrderStatuses',
+                Parameters    : [{
+                    $Type            : 'Common.ValueListParameterInOut',
+                    ValueListProperty: 'ID',
+                    LocalDataProperty: 'status_ID'
+                }, ]
+            },
+        }
+    )
+    status;
     @UI.HiddenFilter: false
     @title          : 'Data de Criação'
     createdAt;
@@ -90,4 +119,10 @@ annotate ms.SalesOrderHeaders with @(UI: {
     modifiedAt;
     @title: 'Atualizado Por'
     modifiedBy;
+};
+
+annotate ms.SalesOrderStatuses with {
+    @Common.Text           : description
+    @Common.TextArrangement: #TextOnly
+    ID;
 };
