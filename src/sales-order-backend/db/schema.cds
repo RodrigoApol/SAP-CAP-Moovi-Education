@@ -5,6 +5,7 @@ namespace sales;
 entity SalesOrderHeaders : managed {
     key ID          : UUID;
         customer    : Association to Customers;
+        status      : Association to SalesOrderStatuses;
         items       : Composition of many SalesOrderItems
                           on items.header = $self;
         totalAmount : Decimal(15, 2);
@@ -16,6 +17,15 @@ entity SalesOrderItems : managed {
         product  : Association to Products;
         quantity : Integer;
         price    : Decimal(15, 2);
+}
+
+entity SalesOrderStatuses {
+    key ID          : String enum {
+            COMPLETED = 'COMPLETED';
+            PENDING = 'PENDING';
+            REJECTED = 'REJECTED';
+        };
+        description : localized String;
 }
 
 entity SalesOrderLogs : managed {
